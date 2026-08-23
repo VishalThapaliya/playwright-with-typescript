@@ -38,7 +38,7 @@ test.describe('Locators', () => {
 
         // get element by alt attribute
         const logoImage = page.getByAltText('logo image');
-        await logoImage.isVisible();
+        await expect(logoImage).toBeVisible();
         await logoImage.click();
     });
 
