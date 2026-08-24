@@ -1,5 +1,9 @@
 import { test } from '@playwright/test';
 
+// grouping test case using test.describe
+// test.describe.only = execute only particular group of tests
+// test.describe.skip = skip particular group of tests
+
 test.describe.skip('Home Page Tests', () => {
     test('should check homepage title', async ({ page }) => {
         console.log("This is Homa Page Title Test.");
