@@ -1,10 +1,6 @@
-import test, { expect } from "@playwright/test";
-import { LoginPage } from "../pages/LoginPage";
-import { ProductListPage } from "../pages/ProductListPage";
-import { CartPage } from "../pages/CartPage";
+import {test, expect} from "../fixtures/pageObjectFixture";
 
-test('should login successfully', async({ page }) => {
-    const loginPage = new LoginPage(page);
+test('should login successfully', async({ page, loginPage }) => {
     await loginPage.open();
     await loginPage.login('standard_user', 'secret_sauce');
     await expect(page).toHaveURL(/inventory/);
@@ -12,11 +8,7 @@ test('should login successfully', async({ page }) => {
     await page.waitForTimeout(2000);
 });
 
-test('should add product to cart correctly', async ({ page }) => {
-    const loginPage = new LoginPage(page);
-    const productListPage = new ProductListPage(page);
-    const cartPage = new CartPage(page);
-
+test('should add product to cart correctly', async ({ page, loginPage, productListPage, cartPage }) => {
     // login
     await loginPage.open();
     await loginPage.login('standard_user', 'secret_sauce');
