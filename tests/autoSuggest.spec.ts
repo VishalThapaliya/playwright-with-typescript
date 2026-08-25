@@ -6,7 +6,7 @@ test('should test the auto suggestions correctly', async ({ page }) => {
     const searchText = 'playwright';
 
     // search input on Youtube.com
-    await page.getByPlaceholder('Search').fill(searchText);
+    await page.locator('.ytSearchboxComponentInput').fill(searchText);
 
     // auto suggestion item container
     await page.waitForSelector('.ytSuggestionComponentLeftContainer');

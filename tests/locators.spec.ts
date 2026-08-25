@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { DATA } from "../data/data";
 
 test.describe('Locators', () => {
   test('should locate elements by role', async ({ page }) => {
@@ -21,8 +22,8 @@ test.describe('Locators', () => {
         await page.goto('https://www.saucedemo.com');
 
         // get element by placeholder
-        await page.getByPlaceholder('Username').fill('test_user');
-        await page.getByPlaceholder('Password').fill('test_password');
+        await page.getByPlaceholder('Username').fill(DATA.user.username);
+        await page.getByPlaceholder('Password').fill(DATA.user.password);
         await page.getByRole('button', { name: 'Login'}).click();
     });
 
@@ -54,8 +55,8 @@ test.describe('Locators', () => {
     test("should locate elements by particular testing attribute", async ({ page }) => {
         await page.goto('https://saucedemo.com');
 
-        await page.getByPlaceholder('Username').fill('standard_user');
-        await page.getByPlaceholder('Password').fill('secret_sauce');
+        await page.getByPlaceholder('Username').fill(DATA.user.username);
+        await page.getByPlaceholder('Password').fill(DATA.user.password);
         await page.getByRole('button', { name: 'Login' }).click();
 
         // get element by data-test (testing attribute)

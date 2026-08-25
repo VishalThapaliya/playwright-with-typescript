@@ -24,14 +24,10 @@ test.describe("Login Flow", () => {
         await expect(page).toHaveTitle('Logged In Successfully | Practice Test Automation');
         await expect(page).toHaveURL(successFullyPageURL);
         await expect(page.getByText('Logged In Successfully')).toBeVisible();
-
-        await page.waitForTimeout(3000);
         
         // logout steps
         await page.getByRole('link', { name: 'Log out' }).click();
-        
-        await page.waitForTimeout(2000);
-        
+                
         // verify loggedout successfully
         expect(page).toHaveURL(loginPageURL);
         await expect(pageHeading).toBeVisible();
