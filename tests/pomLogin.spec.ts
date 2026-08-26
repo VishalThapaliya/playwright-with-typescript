@@ -13,6 +13,9 @@ test('should add product to cart correctly', async ({ page, loginPage, productLi
     // product page
     await productListPage.addToCart();
     await page.waitForTimeout(2000);
+    
+    await productListPage.burgerMenu.openAndCloseBugerMenu();
+    
     expect(await productListPage.cartBadgeIcon).toHaveText('1');
     await productListPage.goToCart();
     await page.waitForTimeout(2000);
@@ -21,4 +24,7 @@ test('should add product to cart correctly', async ({ page, loginPage, productLi
 
     // cart page
     expect(await cartPage.cartProduct).toHaveText('Sauce Labs Backpack');
+    await cartPage.burgerMenu.openAndCloseBugerMenu();
+
+    await page.waitForTimeout(2000);
 });
