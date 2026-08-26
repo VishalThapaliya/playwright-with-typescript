@@ -2,17 +2,12 @@ import { DATA } from "../data/data";
 import {test, expect} from "../fixtures/pageObjectFixture";
 
 test('should login successfully', async({ page, loginPage }) => {
-    await loginPage.open();
-    await loginPage.login(DATA.user.username, DATA.user.password);
+    await page.goto('https://www.saucedemo.com/inventory.html');
     await expect(page).toHaveURL(/inventory/);
-    
-    await page.waitForTimeout(2000);
 });
 
 test('should add product to cart correctly', async ({ page, loginPage, productListPage, cartPage }) => {
-    // login
-    await loginPage.open();
-    await loginPage.login(DATA.user.username, DATA.user.password);
+    await page.goto('https://www.saucedemo.com/inventory.html');
     await expect(page).toHaveURL(/inventory/);
 
     // product page
@@ -26,5 +21,4 @@ test('should add product to cart correctly', async ({ page, loginPage, productLi
 
     // cart page
     expect(await cartPage.cartProduct).toHaveText('Sauce Labs Backpack');
-    await page.waitForTimeout(2000);
 });
