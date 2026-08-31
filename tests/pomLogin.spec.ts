@@ -12,14 +12,16 @@ test('should add product to cart correctly', async ({ page, loginPage, productLi
 
     // product page
     await productListPage.addToCart();
-    await page.waitForTimeout(2000);
+    // await page.waitForTimeout(2000);
     
     await productListPage.burgerMenu.openAndCloseBugerMenu();
+    await productListPage.waitForPageLoad();
     
     expect(await productListPage.cartBadgeIcon).toHaveText('1');
     await productListPage.goToCart();
-    await page.waitForTimeout(2000);
-    
+    // await page.waitForTimeout(2000);
+
+    await cartPage.waitForPageLoad();
     expect(await page).toHaveURL(/cart/);
 
     // cart page
