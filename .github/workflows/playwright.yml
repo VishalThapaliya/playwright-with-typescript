@@ -6,7 +6,7 @@ on:
     branches: [ main, master ]
     types: [opened, synchronize, reopened]
 env:
-  dev
+  ENV:dev
 jobs:
   test:
     timeout-minutes: 60
